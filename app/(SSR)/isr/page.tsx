@@ -5,18 +5,17 @@ import Link from "next/link";
 import { Alert } from "react-bootstrap";
 
 export const metadata = {
-  title: "Dynamic Page - NextJS 14 Image Gallery",
+  title: "Incremental Static Regeneration - NextJS 14 Image Gallery",
 };
 
-// export const revalidate = 0;
+export const revalidate = 15;
 
-const Dynamic = async () => {
+const Isr = async () => {
   const res = await fetch(
     "https://api.unsplash.com/photos/random?client_id=" +
       process.env.UNSPLASH_KEY,
     {
-      // cache: "no-store / no-cache",
-      next: { revalidate: 0 },
+      // next: { revalidate: 15 },
     }
   );
 
@@ -40,4 +39,4 @@ const Dynamic = async () => {
   );
 };
 
-export default Dynamic;
+export default Isr;
